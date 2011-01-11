@@ -3,6 +3,8 @@ package net.vvakame.lingr.redmine.service;
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
 
+import net.vvakame.lingr.service.redmine.Slim3Service;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

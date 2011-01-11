@@ -4,7 +4,7 @@
   
     <context-param>
         <param-name>slim3.rootPackage</param-name>
-        <param-value>net.vvakame.lingr.redmine</param-value>
+        <param-value>net.vvakame.lingr</param-value>
     </context-param>
     <context-param>
         <param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
