@@ -8,8 +8,11 @@ import java.net.URLDecoder;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
+import net.vvakame.lingr.entity.redmine.Event;
+import net.vvakame.lingr.entity.redmine.LingrPush;
+import net.vvakame.lingr.entity.redmine.LingrPushGen;
+import net.vvakame.util.jsonpullparser.JsonPullParser;
 
 import org.slim3.controller.Navigation;
 import org.slim3.controller.SimpleController;
@@ -44,12 +47,13 @@ public class IndexController extends SimpleController {
 			throw new IllegalStateException();
 		}
 
+		JsonPullParser parser = JsonPullParser.newParser(asString);
+		LingrPush lingr = LingrPushGen.get(parser);
+
 		response.setCharacterEncoding("utf-8");
 
-		JSONArray jsonArray = json.getJSONArray("events");
-		for (int i = 0; i < jsonArray.size(); i++) {
-			JSONObject event = jsonArray.getJSONObject(i);
-			String text = event.getJSONObject("message").getString("text");
+		for (Event event : lingr.getEvents()) {
+			String text = event.getMessage().getText();
 			response.getWriter().println(text);
 		}
 

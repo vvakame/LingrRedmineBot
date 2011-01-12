@@ -10,10 +10,10 @@
       <name>com.google.gdt.eclipse.core.webAppProjectValidator</name>
     </buildCommand>
     <buildCommand>
-      <name>com.google.appengine.eclipse.core.projectValidator</name>
+      <name>com.google.appengine.eclipse.core.enhancerbuilder</name>
     </buildCommand>
     <buildCommand>
-      <name>com.google.appengine.eclipse.core.enhancerbuilder</name>
+      <name>com.google.appengine.eclipse.core.projectValidator</name>
     </buildCommand>
   </buildSpec>
   <natures>

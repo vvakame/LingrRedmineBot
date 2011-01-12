@@ -13,6 +13,7 @@
   <classpathentry kind="var" path="M2_REPO/net/sf/ezmorph/ezmorph/1.0.6/ezmorph-1.0.6.jar" sourcepath="M2_REPO/net/sf/ezmorph/ezmorph/1.0.6/ezmorph-1.0.6-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/google/collections/google-collections/1.0-rc1/google-collections-1.0-rc1.jar" sourcepath="M2_REPO/com/google/collections/google-collections/1.0-rc1/google-collections-1.0-rc1-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/net/sf/json-lib/json-lib/2.3/json-lib-2.3-jdk15.jar" sourcepath="M2_REPO/net/sf/json-lib/json-lib/2.3/json-lib-2.3-jdk15-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/net/vvakame/jsonpullparser-core/0.2-SNAPSHOT/jsonpullparser-core-0.2-SNAPSHOT.jar" sourcepath="M2_REPO/net/vvakame/jsonpullparser-core/0.2-SNAPSHOT/jsonpullparser-core-0.2-SNAPSHOT-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/junit/junit/4.7/junit-4.7.jar" sourcepath="M2_REPO/junit/junit/4.7/junit-4.7-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/slim3/slim3/1.0.6/slim3-1.0.6.jar" sourcepath="M2_REPO/org/slim3/slim3/1.0.6/slim3-1.0.6-sources.jar"/>
   <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>

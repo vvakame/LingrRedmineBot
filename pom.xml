@@ -7,10 +7,12 @@
 	<version>1.0-SNAPSHOT</version>
 	<properties>
 		<slim3.version>1.0.6</slim3.version>
+		<jsonpullparser.version>0.2-SNAPSHOT</jsonpullparser.version>
 		<appengine.version>1.4.0</appengine.version>
 		<generated.src>.apt_generated</generated.src>
 		<generated.war>war</generated.war>
 		<eclipse.lib>eclipse.lib</eclipse.lib>
+		<genclass.postfix>Generated</genclass.postfix>
 	</properties>
 	<repositories>
 		<repository>
@@ -112,11 +114,15 @@
 			<version>1.0-rc1</version>
 		</dependency>
 		<dependency>
-			<groupId>net.sf.json-lib</groupId>
-			<artifactId>json-lib</artifactId>
-			<version>2.3</version>
-			<!-- <scope>test</scope> -->
-			<classifier>jdk15</classifier>
+			<groupId>net.vvakame</groupId>
+			<artifactId>jsonpullparser-core</artifactId>
+			<version>0.2-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>net.vvakame</groupId>
+			<artifactId>jsonpullparser-apt</artifactId>
+			<version>0.2-SNAPSHOT</version>
+			<scope>provided</scope>
 		</dependency>
 	</dependencies>
 	<reporting>
@@ -170,14 +176,24 @@
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>apt-maven-plugin</artifactId>
-					<version>1.0-alpha-3</version>
+					<version>1.0-alpha-4</version>
 					<dependencies>
 						<dependency>
 							<groupId>org.slim3</groupId>
 							<artifactId>slim3-gen</artifactId>
 							<version>${slim3.version}</version>
 						</dependency>
+						<dependency>
+							<groupId>net.vvakame</groupId>
+							<artifactId>jsonpullparser-apt</artifactId>
+							<version>${jsonpullparser.version}</version>
+						</dependency>
 					</dependencies>
+					<configuration>
+						<encoding>utf-8</encoding>
+						<outputDirectory>${generated.src}</outputDirectory>
+						<factory>net.vvakame.jsonpullparser.factiory.JsonAnnotationProcessor</factory>
+					</configuration>
 				</plugin>
 			</plugins>
 		</pluginManagement>
@@ -210,10 +226,6 @@
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>apt-maven-plugin</artifactId>
-				<configuration>
-					<encoding>utf-8</encoding>
-					<outputDirectory>${generated.src}</outputDirectory>
-				</configuration>
 				<executions>
 					<execution>
 						<phase>process-sources</phase>
@@ -254,6 +266,20 @@
 							<overWriteIfNewer>true</overWriteIfNewer>
 						</configuration>
 					</execution>
+					<execution>
+						<id>copy-dependencies-for-apt2</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${eclipse.lib}</outputDirectory>
+							<includeArtifactIds>jsonpullparser-apt</includeArtifactIds>
+							<overWriteReleases>false</overWriteReleases>
+							<overWriteSnapshots>true</overWriteSnapshots>
+							<overWriteIfNewer>true</overWriteIfNewer>
+						</configuration>
+					</execution>
 				</executions>
 			</plugin>
 			<plugin>
@@ -275,6 +301,12 @@
 						</fileset>
 						<!-- <fileset> <directory>${eclipse.lib}</directory> <includes> <include>slim3-gen-*.jar</include> 
 							</includes> </fileset> -->
+						<fileset>
+							<directory>${eclipse.lib}</directory>
+							<includes>
+								<include>jsonpullparser-*.jar</include>
+							</includes>
+						</fileset>
 					</filesets>
 				</configuration>
 			</plugin>
@@ -296,6 +328,7 @@
 						<exclude>com.google.appengine:appengine-api-labs</exclude>
 						<exclude>com.google.appengine:appengine-api-stubs</exclude>
 						<exclude>com.google.appengine:appengine-local-runtime</exclude>
+						<exclude>net.vvakame:jsonpullparser-apt</exclude>
 					</excludes>
 					<additionalProjectnatures>
 						<projectnature>com.google.appengine.eclipse.core.gaeNature</projectnature>
@@ -316,7 +349,9 @@
 							<content>
                 <![CDATA[
 <factorypath>
-  <factorypathentry kind="WKSPJAR" id="/${artifactId}/${eclipse.lib}/slim3-gen-${slim3.version}.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="WKSPJAR" id="/${artifactId}/${eclipse.lib}/jsonpullparser-apt-${jsonpullparser.version}.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="WKSPJAR" id="/${artifactId}/${eclipse.lib}/slim3-gen-${slim3.version}.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="PLUGIN" id="org.eclipse.jst.ws.annotations.core" enabled="true" runInBatchMode="false"/>
 </factorypath>
                ]]>
 							</content>
@@ -358,6 +393,7 @@ ormEnhancementInclusions=
                 <![CDATA[
 org.eclipse.jdt.core.compiler.codegen.targetPlatform=1.6
 eclipse.preferences.version=1
+org.eclipse.jdt.core.compiler.processAnnotations=enabled
 org.eclipse.jdt.core.compiler.source=1.6
 org.eclipse.jdt.core.compiler.compliance=1.6
 org.eclipse.jdt.core.builder.cleanOutputFolder=clean
