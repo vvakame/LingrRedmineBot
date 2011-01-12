@@ -8,7 +8,6 @@ import java.net.URLDecoder;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import net.sf.json.JSONObject;
 import net.vvakame.lingr.entity.redmine.Push;
 import net.vvakame.lingr.entity.redmine.PushGen;
 import net.vvakame.util.jsonpullparser.JsonPullParser;
@@ -42,14 +41,6 @@ public abstract class LingrControllerBase extends SimpleController {
 		}
 
 		logger.log(Level.INFO, asString);
-		JSONObject json = JSONObject.fromObject(asString);
-
-		if (!"ok".equals(json.getString("status"))) {
-			response.getWriter().println("unexpected error.");
-			response.flushBuffer();
-			throw new IllegalStateException();
-		}
-
 		response.setCharacterEncoding("utf-8");
 
 		JsonPullParser parser = JsonPullParser.newParser(asString);
