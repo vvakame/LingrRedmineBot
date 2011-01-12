@@ -2,8 +2,8 @@ package net.vvakame.lingr.service.redmine;
 
 import java.util.List;
 
-import net.vvakame.lingr.meta.redmine.Slim3ModelMeta;
-import net.vvakame.lingr.model.redmine.Slim3Model;
+import net.vvakame.lingr.entity.redmine.Slim3Model;
+import net.vvakame.lingr.entity.redmine.Slim3ModelMeta;
 
 import org.slim3.datastore.Datastore;
 
