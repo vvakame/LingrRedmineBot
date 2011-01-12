@@ -1,38 +1,33 @@
 package net.vvakame.lingr.redmine.controller;
 
-import static org.hamcrest.CoreMatchers.*;
-import static org.junit.Assert.*;
-
 import java.io.IOException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletResponse;
 
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
-import org.slim3.tester.ControllerTester;
+import org.slim3.tester.ControllerTestCase;
 
-public class IndexControllerTest {
+import static org.hamcrest.CoreMatchers.*;
 
+import static org.junit.Assert.*;
+
+/**
+ * @author vvakame
+ */
+public class IndexControllerTest extends ControllerTestCase {
+
+	/**
+	 * @throws NullPointerException
+	 * @throws IllegalArgumentException
+	 * @throws IOException
+	 * @throws ServletException
+	 * @author vvakame
+	 */
 	@Test
-	public void test() throws NullPointerException, IllegalArgumentException,
-			IOException, ServletException {
-		tester.start("/");
-		assertThat(tester.response.getStatus(),
-				is(equalTo(HttpServletResponse.SC_OK)));
-	}
-
-	ControllerTester tester;
-
-	@Before
-	public void setUp() throws Exception {
-		tester = new ControllerTester(this.getClass());
-		tester.setUp();
-	}
-
-	@After
-	public void tearDown() throws Exception {
-		tester.tearDown();
+	public void test() throws NullPointerException, IllegalArgumentException, IOException,
+			ServletException {
+		tester.start("/redmine");
+		assertThat(tester.response.getStatus(), is(equalTo(HttpServletResponse.SC_OK)));
 	}
 }

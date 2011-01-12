@@ -5,8 +5,11 @@ import java.util.List;
 import net.vvakame.util.jsonpullparser.annotation.JsonKey;
 import net.vvakame.util.jsonpullparser.annotation.JsonModel;
 
+/**
+ * @author vvakame
+ */
 @JsonModel
-public class LingrPush {
+public class Push {
 
 	@JsonKey
 	String status;
