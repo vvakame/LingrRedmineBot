@@ -10,7 +10,6 @@ import java.util.logging.Logger;
 
 import net.vvakame.lingr.entity.redmine.Push;
 import net.vvakame.lingr.entity.redmine.PushGen;
-import net.vvakame.util.jsonpullparser.JsonPullParser;
 
 import org.slim3.controller.Navigation;
 import org.slim3.controller.SimpleController;
@@ -43,8 +42,7 @@ public abstract class LingrControllerBase extends SimpleController {
 		logger.log(Level.INFO, asString);
 		response.setCharacterEncoding("utf-8");
 
-		JsonPullParser parser = JsonPullParser.newParser(asString);
-		Push push = PushGen.get(parser);
+		Push push = PushGen.get(asString);
 
 		process(push);
 

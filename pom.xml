@@ -7,7 +7,7 @@
 	<version>1.0-SNAPSHOT</version>
 	<properties>
 		<slim3.version>1.0.6</slim3.version>
-		<jsonpullparser.version>0.2-SNAPSHOT</jsonpullparser.version>
+		<jsonpullparser.version>0.2</jsonpullparser.version>
 		<appengine.version>1.4.0</appengine.version>
 		<generated.src>.apt_generated</generated.src>
 		<generated.war>war</generated.war>
@@ -116,12 +116,12 @@
 		<dependency>
 			<groupId>net.vvakame</groupId>
 			<artifactId>jsonpullparser-core</artifactId>
-			<version>0.2-SNAPSHOT</version>
+			<version>${jsonpullparser.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>net.vvakame</groupId>
 			<artifactId>jsonpullparser-apt</artifactId>
-			<version>0.2-SNAPSHOT</version>
+			<version>${jsonpullparser.version}</version>
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>

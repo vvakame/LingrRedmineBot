@@ -12,46 +12,8 @@ import net.vvakame.util.jsonpullparser.annotation.JsonModel;
 public class Push {
 
 	@JsonKey
-	String status;
-
-	@JsonKey
-	long counter;
-
-	@JsonKey
 	List<Event> events;
 
-
-	/**
-	 * @return the status
-	 * @category accessor
-	 */
-	public String getStatus() {
-		return status;
-	}
-
-	/**
-	 * @param status the status to set
-	 * @category accessor
-	 */
-	public void setStatus(String status) {
-		this.status = status;
-	}
-
-	/**
-	 * @return the counter
-	 * @category accessor
-	 */
-	public long getCounter() {
-		return counter;
-	}
-
-	/**
-	 * @param counter the counter to set
-	 * @category accessor
-	 */
-	public void setCounter(long counter) {
-		this.counter = counter;
-	}
 
 	/**
 	 * @return the events
