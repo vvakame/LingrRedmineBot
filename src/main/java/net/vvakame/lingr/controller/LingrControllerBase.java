@@ -32,21 +32,14 @@ public abstract class LingrControllerBase extends SimpleController {
 			return null;
 		}
 
-		if (asString.startsWith("json=")) {
-			asString = asString.substring(5);
-			asString = URLDecoder.decode(asString, "utf-8");
-		} else {
-			return null;
-		}
-
 		logger.log(Level.INFO, asString);
+		asString = URLDecoder.decode(asString, "utf-8");
 		response.setCharacterEncoding("utf-8");
+		response.setContentType("text/plain");
 
 		Push push = PushGen.get(asString);
 
-		process(push);
-
-		return null;
+		return process(push);
 	}
 
 	/**
