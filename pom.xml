@@ -7,7 +7,7 @@
 	<version>1.0-SNAPSHOT</version>
 	<properties>
 		<slim3.version>1.0.6</slim3.version>
-		<jsonpullparser.version>0.2</jsonpullparser.version>
+		<jsonpullparser.version>0.5</jsonpullparser.version>
 		<appengine.version>1.4.0</appengine.version>
 		<generated.src>.apt_generated</generated.src>
 		<generated.war>war</generated.war>
@@ -25,6 +25,14 @@
 			<releases>
 				<updatePolicy>never</updatePolicy>
 			</releases>
+		</repository>
+		<repository>
+			<id>vvakame-jsonpullparser-release</id>
+			<url>http://vvakame.github.com/JsonPullParser/release</url>
+		</repository>
+		<repository>
+			<id>vvakame-jsonpullparser-snapshot</id>
+			<url>http://vvakame.github.com/JsonPullParser/snapshots</url>
 		</repository>
 	</repositories>
 	<dependencies>
@@ -183,17 +191,7 @@
 							<artifactId>slim3-gen</artifactId>
 							<version>${slim3.version}</version>
 						</dependency>
-						<dependency>
-							<groupId>net.vvakame</groupId>
-							<artifactId>jsonpullparser-apt</artifactId>
-							<version>${jsonpullparser.version}</version>
-						</dependency>
 					</dependencies>
-					<configuration>
-						<encoding>utf-8</encoding>
-						<outputDirectory>${generated.src}</outputDirectory>
-						<factory>net.vvakame.jsonpullparser.factiory.JsonAnnotationProcessor</factory>
-					</configuration>
 				</plugin>
 			</plugins>
 		</pluginManagement>
@@ -221,7 +219,40 @@
 					<encoding>utf-8</encoding>
 					<source>1.6</source>
 					<target>1.6</target>
+					<includes>
+						<include>all-your-source-are-belong-to-us</include>
+					</includes>
 				</configuration>
+				<executions>
+					<execution>
+						<id>with-apt</id>
+						<phase>compile</phase>
+						<goals>
+							<goal>compile</goal>
+						</goals>
+						<configuration>
+							<generatedSourcesDirectory>${generated.src}</generatedSourcesDirectory>
+							<proc>only</proc>
+							<compilerArgument>-AJsonPullParserClassPostfix=${genclass.postfix}</compilerArgument>
+							<includes>
+								<include>**</include>
+							</includes>
+						</configuration>
+					</execution>
+					<execution>
+						<id>no-apt</id>
+						<phase>compile</phase>
+						<goals>
+							<goal>compile</goal>
+						</goals>
+						<configuration>
+							<proc>none</proc>
+							<includes>
+								<include>**</include>
+							</includes>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
