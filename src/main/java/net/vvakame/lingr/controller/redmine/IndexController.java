@@ -26,7 +26,9 @@ public class IndexController extends LingrControllerBase {
 			String text = event.getMessage().getText();
 			List<Integer> list = RedmineService.extractTicketId(text);
 			for (int i : list) {
-				responceWrite("http://redmine.topgate.co.jp/redmine/issues/" + i + "\n");
+				String url = "http://redmine.topgate.co.jp/redmine/issues/" + i;
+				logger.info(url);
+				responceWrite(url + "\n");
 			}
 		}
 
