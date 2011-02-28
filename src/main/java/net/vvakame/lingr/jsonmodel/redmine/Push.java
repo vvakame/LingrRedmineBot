@@ -1,4 +1,4 @@
-package net.vvakame.lingr.entity.redmine;
+package net.vvakame.lingr.jsonmodel.redmine;
 
 import java.util.List;
 

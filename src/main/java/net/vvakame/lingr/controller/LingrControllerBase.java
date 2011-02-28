@@ -7,8 +7,8 @@ import java.io.InputStreamReader;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import net.vvakame.lingr.entity.redmine.Push;
-import net.vvakame.lingr.entity.redmine.PushGen;
+import net.vvakame.lingr.jsonmodel.redmine.Push;
+import net.vvakame.lingr.jsonmodel.redmine.PushGen;
 
 import org.slim3.controller.Navigation;
 import org.slim3.controller.SimpleController;

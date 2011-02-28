@@ -5,8 +5,8 @@ import java.util.List;
 import java.util.logging.Logger;
 
 import net.vvakame.lingr.controller.LingrControllerBase;
-import net.vvakame.lingr.entity.redmine.Event;
-import net.vvakame.lingr.entity.redmine.Push;
+import net.vvakame.lingr.jsonmodel.redmine.Event;
+import net.vvakame.lingr.jsonmodel.redmine.Push;
 import net.vvakame.lingr.service.redmine.RedmineService;
 
 import org.slim3.controller.Navigation;
