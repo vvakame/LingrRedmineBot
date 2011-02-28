@@ -5,8 +5,10 @@ import java.util.List;
 import java.util.logging.Logger;
 
 import net.vvakame.lingr.controller.LingrControllerBase;
+import net.vvakame.lingr.entity.redmine.RedmineInfo;
 import net.vvakame.lingr.jsonmodel.redmine.Event;
 import net.vvakame.lingr.jsonmodel.redmine.Push;
+import net.vvakame.lingr.service.redmine.RedmineInfoService;
 import net.vvakame.lingr.service.redmine.RedmineService;
 
 import org.slim3.controller.Navigation;
@@ -22,13 +24,28 @@ public class IndexController extends LingrControllerBase {
 
 	@Override
 	public Navigation process(Push push) throws IOException {
+		String room = push.getEvents().get(0).getMessage().getRoom();
 		for (Event event : push.getEvents()) {
 			String text = event.getMessage().getText();
-			List<Integer> list = RedmineService.extractTicketId(text);
-			for (int i : list) {
-				String url = "http://redmine.topgate.co.jp/redmine/issues/" + i;
-				logger.info(url);
-				responceWrite(url + "\n");
+			String baseUrl = RedmineService.extractBaseUrl(text);
+			if (baseUrl != null) {
+				RedmineInfoService.regist(room, baseUrl);
+			}
+		}
+
+		RedmineInfo info = RedmineInfoService.get(room);
+		if (info == null) {
+			responceWrite("input Redmine base url." + "\n");
+			responceWrite("format: >>Redmine 'http://redmine.example.com/'");
+		} else {
+			for (Event event : push.getEvents()) {
+				String text = event.getMessage().getText();
+				List<Integer> list = RedmineService.extractTicketId(text);
+				for (int i : list) {
+					String url = info.getBaseUrl() + i;
+					logger.info(url);
+					responceWrite(url + "\n");
+				}
 			}
 		}
 

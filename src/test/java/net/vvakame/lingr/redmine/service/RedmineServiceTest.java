@@ -27,4 +27,22 @@ public class RedmineServiceTest {
 		assertThat(list.get(0), is(1));
 		assertThat(list.get(1), is(2));
 	}
+
+	/**
+	 * {@link RedmineService#extractBaseUrl(String)}のテスト.
+	 * @author vvakame
+	 */
+	@Test
+	public void extractBaseUrl() {
+		String base;
+
+		base = RedmineService.extractBaseUrl(">>Redmine 'http://www.google.com/'");
+		assertThat(base, is("http://www.google.com/"));
+
+		base = RedmineService.extractBaseUrl(">>Redmine  \t'http://www.google.com/'     ");
+		assertThat(base, is("http://www.google.com/"));
+
+		base = RedmineService.extractBaseUrl("   >>Redmine 'http://www.google.com/'");
+		assertThat(base, nullValue());
+	}
 }

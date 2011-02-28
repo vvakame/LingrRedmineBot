@@ -14,6 +14,8 @@ public class RedmineService {
 
 	private static final Pattern TICKET_PATTERN = Pattern.compile("#([0-9]+)");
 
+	private static final Pattern BASE_URL_PATTERN = Pattern.compile("^>>Redmine\\s+'(.+)'");
+
 
 	/**
 	 * 文字列に含まれるチケット番号の一覧を取得し返します.
@@ -33,12 +35,17 @@ public class RedmineService {
 	}
 
 	/**
-	 * チケット番号からURLを取得します.
-	 * @param ticketId
-	 * @return URL
+	 * 文字列に含まれる baseUrl を取得し返します.
+	 * @param text
+	 * @return baseUrl
 	 * @author vvakame
 	 */
-	public static String getTicketAddress(int ticketId) {
-		return null;
+	public static String extractBaseUrl(String text) {
+		Matcher matcher = BASE_URL_PATTERN.matcher(text);
+		if (matcher.find()) {
+			return matcher.group(1);
+		} else {
+			return null;
+		}
 	}
 }
