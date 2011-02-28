@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <appengine-web-app xmlns="http://appengine.google.com/ns/1.0">
 	<application>lingr-bot</application>
-	<version>2011-02-18a</version>
+	<version>2011-02-28a</version>
 
 	<static-files>
 		<include path="*.html" />

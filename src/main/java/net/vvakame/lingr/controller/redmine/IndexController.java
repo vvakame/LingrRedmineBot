@@ -30,11 +30,19 @@ public class IndexController extends LingrControllerBase {
 			String baseUrl = RedmineService.extractBaseUrl(text);
 			if (baseUrl != null) {
 				RedmineInfoService.regist(room, baseUrl);
+				responceWrite("Regist base url. can you see this url? " + baseUrl + "1 \n");
 			}
 		}
 
 		RedmineInfo info = RedmineInfoService.get(room);
 		if (info == null) {
+			for (Event event : push.getEvents()) {
+				String text = event.getMessage().getText();
+				List<Integer> list = RedmineService.extractTicketId(text);
+				if (list.size() == 0) {
+					return null;
+				}
+			}
 			responceWrite("input Redmine base url." + "\n");
 			responceWrite("format: >>Redmine 'http://redmine.example.com/'");
 		} else {
