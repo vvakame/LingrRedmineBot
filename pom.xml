@@ -6,9 +6,9 @@
 	<packaging>war</packaging>
 	<version>1.0-SNAPSHOT</version>
 	<properties>
-		<slim3.version>1.0.6</slim3.version>
+		<slim3.version>1.0.8</slim3.version>
 		<jsonpullparser.version>0.6</jsonpullparser.version>
-		<appengine.version>1.4.0</appengine.version>
+		<appengine.version>1.4.2</appengine.version>
 		<generated.src>.apt_generated</generated.src>
 		<generated.war>war</generated.war>
 		<eclipse.lib>eclipse.lib</eclipse.lib>

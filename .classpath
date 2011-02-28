@@ -9,9 +9,9 @@
   <classpathentry kind="var" path="M2_REPO/commons-io/commons-io/1.4/commons-io-1.4.jar" sourcepath="M2_REPO/commons-io/commons-io/1.4/commons-io-1.4-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/commons-lang/commons-lang/2.5/commons-lang-2.5.jar" sourcepath="M2_REPO/commons-lang/commons-lang/2.5/commons-lang-2.5-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/google/collections/google-collections/1.0-rc1/google-collections-1.0-rc1.jar" sourcepath="M2_REPO/com/google/collections/google-collections/1.0-rc1/google-collections-1.0-rc1-sources.jar"/>
-  <classpathentry kind="var" path="M2_REPO/net/vvakame/jsonpullparser-core/0.6/jsonpullparser-core-0.6.jar" sourcepath="M2_REPO/net/vvakame/jsonpullparser-core/0.6/jsonpullparser-core-0.6-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/net/vvakame/jsonpullparser-core/0.6/jsonpullparser-core-0.6.jar"/>
   <classpathentry kind="var" path="M2_REPO/junit/junit/4.7/junit-4.7.jar" sourcepath="M2_REPO/junit/junit/4.7/junit-4.7-sources.jar"/>
-  <classpathentry kind="var" path="M2_REPO/org/slim3/slim3/1.0.6/slim3-1.0.6.jar" sourcepath="M2_REPO/org/slim3/slim3/1.0.6/slim3-1.0.6-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/slim3/slim3/1.0.8/slim3-1.0.8.jar"/>
   <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
   <classpathentry kind="con" path="com.google.appengine.eclipse.core.GAE_CONTAINER"/>
 </classpath>
