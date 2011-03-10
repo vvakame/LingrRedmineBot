@@ -48,8 +48,8 @@ public class RedmineInfoService {
 		if (info == null) {
 			info = new RedmineInfo();
 			info.setKey(createKey(room));
-			info.setBaseUrl(baseUrl);
 		}
+		info.setBaseUrl(baseUrl);
 		Datastore.put(info);
 	}
 }
